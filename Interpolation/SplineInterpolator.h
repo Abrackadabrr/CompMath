@@ -5,13 +5,13 @@
 #ifndef LABS_COMP_MATH_SPLINEINTERPOLATOR_H
 #define LABS_COMP_MATH_SPLINEINTERPOLATOR_H
 
-#include "../ThreeDiagonal/ThreeDiagonalMatrix.hpp"
-#include "../ThreeDiagonal/ThreeDiagonalSolver.hpp"
-#include "../vectors/Vectors.hpp"
+#include "LinAlg/ThreeDiagonal/ThreeDiagonalMatrix.hpp"
+#include "LinAlg/ThreeDiagonal/ThreeDiagonalSolver.hpp"
+#include "LinAlg/vectors/Vectors.hpp"
 
 
 /***
- * Кубический сплайн
+ * Естественный одномерный кубический сплайн
  * @tparam N - количество точек в шаблоне
  */
 template<int N>
@@ -78,7 +78,7 @@ public:
                 return a[i-1] + b[i-1] * arg + (c[i-1]/2) * arg2 + (d[i-1]/6) * arg3;
              }
         }
-        return -1000000000000;
+        throw std::exception();
     }
 
     double interpErrorUniformGrid(double x, double max_proizvodnaya, double h) {

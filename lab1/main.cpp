@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include "NewtonInterpolation.hpp"
-#include "SplineInterpolator.h"
+#include "Interpolation/NewtonInterpolation.hpp"
+#include "Interpolation/SplineInterpolator.h"
 
 int main() {
     constexpr int N = 11;
