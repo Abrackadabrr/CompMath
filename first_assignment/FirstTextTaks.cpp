@@ -25,33 +25,9 @@ std::vector<double> function(std::vector<double> x) {
     return result;
 }
 
-Slae::Matrix::DenseMatrix<double> jacobi_function_test(std::vector<double> x) {
-    Slae::Matrix::DenseMatrix<double> result(1, 1);
-    result(0, 0) = 1 /(2 * x[0]);
-    return result;
-}
-
-std::vector<double> function_test(std::vector<double> x) {
-    std::vector<double> result(1, 0);
-    result[0] = x[0] * x[0] - 1;
-    return result;
-}
-
 int main() {
-    // тесторивание наприанного кода
-//
-//    std::vector<double> initial_appro{-0.1};
-//    const auto result0 = Newton<2>(initial_appro, jacobi_function_test, function_test, 1e-16);
-//    std::cout.precision(10);
-//    if (result0.has_value())
-//        std::cout << result0.value() << std::endl;
-    // показывает, что корни 1 и -1 притягивают одинаково начальные условия
-
-
     // корни располагаются в областях [-0.7; -0.6] X [-0.8; -0.7] и [0.6; 0.7] X [0.7; 0.8]
     // тогда и начальные приближения соответвующие
-
-    // сходится всегда к положительным корням.........
 
     std::cout << "Решения тектовой задачи 1" << std::endl;
     std::vector<double> initial_approx{0.65, 0.75};

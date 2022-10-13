@@ -69,7 +69,7 @@ public:
         }
     }
 
-    double interpolate(double x) {
+    [[nodiscard]] double interpolate(double x) const{
         for (int i = 0; i < N; i++) {
             if (x < xData[i] && i != 0) {
                 const double arg = (x - xData[i]);
@@ -79,6 +79,15 @@ public:
              }
         }
         throw std::exception();
+    }
+
+    [[nodiscard]] double extrapolate(double x) const{
+        if (x > xData.back()){
+            const double arg = (x - xData.back());
+            const double arg2 = arg * arg;
+            const double arg3 = arg2 * arg;
+            return a.back() + b.back() * arg + (c.back()/2) * arg2 + (d.back()/6) * arg3;
+        }
     }
 
     double interpErrorUniformGrid(double x, double max_proizvodnaya, double h) {

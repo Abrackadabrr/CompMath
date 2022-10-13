@@ -1,3 +1,5 @@
 add_executable(firstTextTask FirstTextTaks.cpp ../LinAlg/dense_matrix/Densematrix.hpp)
 add_executable(secondTask SecondTask.cpp ../Integration/Integration.cpp)
+add_executable(4_9_32 4_9_32.cpp)
+target_link_libraries(4_9_32 linalg)
 include_directories(..)

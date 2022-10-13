@@ -32,6 +32,7 @@ public:
     NewtonInterpolation(const std::array<realType, N>& xData, const std::array<valueType, N>& yData);
     valueType interpolate(const realType& x) const noexcept;
     valueType interpError(const realType& x, const valueType& max_proizvodnaya);
+    const std::array<valueType, N>& getDiff();
 };
 
 template <typename realType, typename valueType, indexType N>
@@ -75,6 +76,11 @@ valueType NewtonInterpolation<realType, valueType, N>::interpError(const realTyp
     realType mult = 1;
     for (auto i: xData_) mult *= (x - i);
     return max_proizvodnaya * mult / nfac;
+}
+
+template<typename realType, typename valueType, indexType N>
+const std::array<valueType, N> &NewtonInterpolation<realType, valueType, N>::getDiff(){
+    return dividedDifferences_;
 }
 
 #endif  // NEWTONINTERPOLATION_HPP_
