@@ -2,12 +2,10 @@
 // Created by evgen on 13.10.2022.
 //
 
-#include "Interpolation/NewtonInterpolation.hpp"
-#include "Interpolation/SplineInterpolator.h"
-#include "LinAlg/vectors/Vectors.hpp"
+#include "CompMath/Interpolation/NewtonInterpolation.hpp"
+#include "CompMath/Interpolation/SplineInterpolator.h"
 #include <array>
 #include <iostream>
-
 
 int main() {
     std::array<double, 10> years = {1.910, 1.920, 1.930, 1.940, 1.950, 1.960, 1.970, 1.980, 1.990, 2.000};

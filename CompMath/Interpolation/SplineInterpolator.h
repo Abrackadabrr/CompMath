@@ -17,7 +17,7 @@
 template<int N>
 class CubicSplineInterpolator {
 
-    using matrix = Slae::Matrix::ThreeDiagonalMatrix;
+    using matrix = Slae::Matrix::ThreeDiagonalMatrix<double>;
 
     static_assert(N >= 2);
 private:
@@ -30,7 +30,7 @@ private:
 public:
     CubicSplineInterpolator(std::array<double, N> x, std::array<double, N> f) : xData(x) {
         std::copy(f.begin() + 1, f.begin() + N, a.begin());
-        matrix A = matrix::ThreeDiagonal(N - 2, 0, 2, 0);
+        matrix A = matrix::ThreeDiagonal(N - 2, 0., 2., 0.);
 
         /** формирование массива разностей аргументов сетки **/
         std::array<double, N - 1> h{};
@@ -81,7 +81,7 @@ public:
         throw std::exception();
     }
 
-    [[nodiscard]] double extrapolate(double x) const{
+    double extrapolate(double x) const{
         if (x > xData.back()){
             const double arg = (x - xData.back());
             const double arg2 = arg * arg;
