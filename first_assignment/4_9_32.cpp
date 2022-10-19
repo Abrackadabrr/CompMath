@@ -19,16 +19,4 @@ int main() {
     const double populationXNeIn = NeIn.interpolate(xP);
     const double populationXSpIn = SpIn.extrapolate(xP);
     std::cout.precision(20);
-    std::cout << "Значения в точке 2010: Ньютон = " << populationXNeIn * 1e8 <<", Кубический сплайн = " << populationXSpIn * 1e8 << std::endl;
-
-    // оценка погрешности экстраполяции
-//    std::array<double, 11> y{};
-//    std::array<double, 11> x{};
-//    y[10] = populationX;
-//    x[10] = xP;
-//    for (int i = 0; i< 10; i++) {x[i] = years[i]; y[i] = population[i];}
-//    auto interp = NewtonInterpolation<double, double, 11>(x, y);
-//
-//    const double error = std::pow(h, 9) ;
-//    std::cout << "Ошибка в точке 2010: " << error << std::endl;
-}
+    std::cout << "Знач1

@@ -83,4 +83,37 @@ const std::array<valueType, N> &NewtonInterpolation<realType, valueType, N>::get
     return dividedDifferences_;
 }
 
+/**
+ * Узлы Чебышева на отрезке [a, b]
+ * @tparam N - порядок полинома Чебышева
+ */
+template <typename realType, indexType N>
+std::array<realType, N> getChebyshevNodes(realType a, realType b) {
+    using delta = decltype(b - a);
+
+    std::array<realType, N> result;
+    const delta mul2 = 0.5 * (b - a);
+    const realType mul1 = a + mul2;
+    constexpr delta phi = M_PI / N;
+    constexpr delta phi_2 = M_PI_2 / N;
+    const delta cos1_2 = std::cos(phi_2);
+    const delta sin1_2 = std::sin(phi_2);
+    const delta cos = std::cos(phi);
+    const delta sin = std::sin(phi);
+
+    delta cosk_1 = cos;
+    delta sink_1 = sin;
+
+    result[N - 1] = mul1 + mul2 * (cos * cos1_2 + sin * sin1_2);
+
+    for (indexType i = N - 1; i >= 1; i--) {
+        delta cosk = cosk_1 * cos - sin * sink_1;
+        delta sink = cos * sink_1 + sin * cosk_1;
+        result[i - 1] = mul1 + mul2 * (cosk * cos1_2 + sink * sin1_2);
+        cosk_1 = cosk;
+        sink_1 = sink;
+    }
+    return result;
+}
+
 #endif  // NEWTONINTERPOLATION_HPP_
